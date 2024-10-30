@@ -51,10 +51,38 @@ function processBook(){
  * getBook will retrieve the book data from HTML
  * If all data is valid a Book object will be
  * returned.  If any data is invalid, null will 
- * be returned.
+ * be returned and error messages will be shown
+ * on the webpage.
  */
 function getBook():Book {  // Return book or null.
+    // Get all inputs
+    let isbnTextBox = document.querySelector("#isbn") as HTMLInputElement;
+    let titleTextBox = document.querySelector("#title") as HTMLInputElement;
+    let priceTextBox = document.querySelector("#price") as HTMLInputElement;
+    let releaseDateTextBox = document.querySelector("#release-date") as HTMLInputElement;
 
+    // Extract the data
+    // Validate data
+    let isValidData = true;
+
+    //Validate ISBN
+    let isbn:string = isbnTextBox.value;    // value is always a string coming from a textbox
+                                            // so declaring it with isbn:string is not required.
+    if (!isValidIsbn(isbn)) {
+        isValidData = false;
+        isbnTextBox.nextElementSibling.textContent = "ISBN must be 13 digits only";
+    }
+    
+    // This validates an ISBN 13 number.  Data is the isbn to be tested.
+    function isValidIsbn(data:string) {
+    // Regular expression to check if it's a valid 13-digit number with optional hyphens
+        const isbnRegex = /^(97[89][- ]?)?\d{1,5}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d$/;
+                                            
+        // Check if the format matches
+        if (!isbnRegex.test(data)) {
+            return false;
+        }
+    }
 }
 
 /**

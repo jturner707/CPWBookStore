@@ -18,6 +18,22 @@ function processBook() {
     }
 }
 function getBook() {
+    let isbnTextBox = document.querySelector("#isbn");
+    let titleTextBox = document.querySelector("#title");
+    let priceTextBox = document.querySelector("#price");
+    let releaseDateTextBox = document.querySelector("#release-date");
+    let isValidData = true;
+    let isbn = isbnTextBox.value;
+    if (!isValidIsbn(isbn)) {
+        isValidData = false;
+        isbnTextBox.nextElementSibling.textContent = "ISBN must be 13 digits only";
+    }
+    function isValidIsbn(data) {
+        const isbnRegex = /^(97[89][- ]?)?\d{1,5}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d$/;
+        if (!isbnRegex.test(data)) {
+            return false;
+        }
+    }
 }
 function addBook(b) {
 }
