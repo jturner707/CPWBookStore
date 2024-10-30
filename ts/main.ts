@@ -63,7 +63,7 @@ function getBook():Book {  // Return book or null.
 
     // Extract the data
     // Validate data
-    let isValidData = true;
+    let isValidData:boolean = true;
 
     //Validate ISBN
     let isbn:string = isbnTextBox.value;    // value is always a string coming from a textbox
@@ -76,8 +76,8 @@ function getBook():Book {  // Return book or null.
     // This validates an ISBN 13 number.  Data is the isbn to be tested.
     function isValidIsbn(data:string) {
     // Regular expression to check if it's a valid 13-digit number with optional hyphens
-        const isbnRegex = /^(97[89][- ]?)?\d{1,5}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d$/;
-                                            
+ //       const isbnRegex = /^(97[89][- ]?)?\d{1,5}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d$/;
+         const isbnRegex = /^\d{13}$/;   // Simplified regex did not work.                               
         // Check if the format matches
         if (!isbnRegex.test(data)) {
             return false;
@@ -85,6 +85,13 @@ function getBook():Book {  // Return book or null.
     }
 }
 
+// Validate title
+let title:string = titleTextBox.value;
+if (title.trim() == '') {
+    isValidData = false;
+    
+    let titleErrorSpan = titleTextBox.nextElementSibling;
+}
 /**
  * Adds a Book object to web storage.  Assumes all
  * data is valid.  Inside parenthesis is parameter
