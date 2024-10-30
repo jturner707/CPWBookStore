@@ -45,6 +45,12 @@ function getBook() {
         isValidData = false;
         priceTextBox.nextElementSibling.textContent = "Price must be a positive number.";
     }
+    let releaseDate = releaseDateTextBox.value;
+    const timestamp = Date.parse(releaseDate);
+    if (isNaN(timestamp)) {
+        isValidData = false;
+        releaseDateTextBox.nextElementSibling.textContent = "Release date must be a valid date.";
+    }
     function addBook(b) {
     }
 }

@@ -99,6 +99,18 @@ function getBook():Book {  // Return book or null.
         priceTextBox.nextElementSibling.textContent = "Price must be a positive number."
     }
 
+    // Validate release date
+    let releaseDate = releaseDateTextBox.value;
+    // Attempt to parse the date string
+    const timestamp = Date.parse(releaseDate);
+    
+    // If timestamp is NaN, the date is invalid
+    if (isNaN(timestamp)) {
+        isValidData = false;
+        releaseDateTextBox.nextElementSibling.textContent = "Release date must be a valid date."
+    
+    }
+
     /**
      * Adds a Book object to web storage.  Assumes all
      * data is valid.  Inside parenthesis is parameter
