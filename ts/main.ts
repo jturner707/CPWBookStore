@@ -74,30 +74,38 @@ function getBook():Book {  // Return book or null.
     }
     
     // This validates an ISBN 13 number.  Data is the isbn to be tested.
-    function isValidIsbn(data:string) {
-    // Regular expression to check if it's a valid 13-digit number with optional hyphens
- //       const isbnRegex = /^(97[89][- ]?)?\d{1,5}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d{1,7}[- ]?\d$/;
-         const isbnRegex = /^\d{13}$/;   // Simplified regex did not work.                               
+    function isValidIsbn(isbn:string) {
+        // Regular expression to check if it's a valid 13-digit number with optional hyphens
+        const isbnRegex = /^\d{13}$/;   // Simplified regex did not work.                               
         // Check if the format matches
-        if (!isbnRegex.test(data)) {
+        if (!isbnRegex.test(isbn)) {
             return false;
         }
     }
-}
 
-// Validate title
-let title:string = titleTextBox.value;
-if (title.trim() == '') {
-    isValidData = false;
-    
-    let titleErrorSpan = titleTextBox.nextElementSibling;
-}
-/**
- * Adds a Book object to web storage.  Assumes all
- * data is valid.  Inside parenthesis is parameter
- * and variable name.  :void is return type.
- * @param b 
- */
-function addBook(b:Book):void {
 
+    // Validate title
+    let title:string = titleTextBox.value;
+    if (title.trim() == '') {
+        isValidData = false;
+        let titleErrorSpan = titleTextBox.nextElementSibling;
+        titleErrorSpan.textContent = "You must provide a title."
+    }
+
+    // Validate price
+    let price = parseFloat(priceTextBox.value);
+    if (isNaN(price) || price < 0) {
+        isValidData = false;
+        priceTextBox.nextElementSibling.textContent = "Price must be a positive number."
+    }
+
+    /**
+     * Adds a Book object to web storage.  Assumes all
+     * data is valid.  Inside parenthesis is parameter
+     * and variable name.  :void is return type.
+     * @param b 
+     */
+    function addBook(b:Book):void {
+
+    }
 }
