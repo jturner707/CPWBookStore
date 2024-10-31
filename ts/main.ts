@@ -74,13 +74,9 @@ function getBook():Book {  // Return book or null.
     }
     
     // This validates an ISBN 13 number.  Data is the isbn to be tested.
-    function isValidIsbn(isbn:string) {
-        // Regular expression to check if it's a valid 13-digit number with optional hyphens
-        const isbnRegex = /^\d{13}$/;   // Simplified regex did not work.                               
-        // Check if the format matches
-        if (!isbnRegex.test(isbn)) {
-            return false;
-        }
+    function isValidIsbn(data:string) {
+        const isbnRegex = /^\d{13}$/;   // Simplified regex only checks for 13 numbers.                             
+        return isbnRegex.test(data);
     }
 
 

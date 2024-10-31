@@ -28,11 +28,9 @@ function getBook() {
         isValidData = false;
         isbnTextBox.nextElementSibling.textContent = "ISBN must be 13 digits only";
     }
-    function isValidIsbn(isbn) {
+    function isValidIsbn(data) {
         const isbnRegex = /^\d{13}$/;
-        if (!isbnRegex.test(isbn)) {
-            return false;
-        }
+        return isbnRegex.test(data);
     }
     let title = titleTextBox.value;
     if (title.trim() == '') {
