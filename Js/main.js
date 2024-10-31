@@ -18,6 +18,7 @@ function processBook() {
     }
 }
 function getBook() {
+    clearAllErrorMessages();
     let isbnTextBox = document.querySelector("#isbn");
     let titleTextBox = document.querySelector("#title");
     let priceTextBox = document.querySelector("#price");
@@ -50,5 +51,9 @@ function getBook() {
         releaseDateTextBox.nextElementSibling.textContent = "Release date must be a valid date.";
     }
     function addBook(b) {
+    }
+    function clearAllErrorMessages() {
+        let allSpans = document.querySelectorAll("form span.error-msg");
+        allSpans.forEach(someSpan => someSpan.textContent = "");
     }
 }

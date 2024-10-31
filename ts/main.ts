@@ -55,6 +55,8 @@ function processBook(){
  * on the webpage.
  */
 function getBook():Book {  // Return book or null.
+    clearAllErrorMessages();
+
     // Get all inputs
     let isbnTextBox = document.querySelector("#isbn") as HTMLInputElement;
     let titleTextBox = document.querySelector("#title") as HTMLInputElement;
@@ -115,5 +117,19 @@ function getBook():Book {  // Return book or null.
      */
     function addBook(b:Book):void {
 
+    }
+
+    function clearAllErrorMessages() {
+        // Get all error spans.
+        let allSpans =
+        document.querySelectorAll("form span.error-msg")
+
+        // Loop through and set each span to an empty string.
+        // Lambda function inside allSpans.forEach() 
+        allSpans.forEach(someSpan => someSpan.textContent = "");
+        // for(let i = 0; i< allSpans.length; i++) {
+        //      let currentSpan = allSpans[i];
+        //      currentSpan.textContent = '';
+        // }
     }
 }
