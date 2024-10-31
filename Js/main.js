@@ -50,10 +50,23 @@ function getBook() {
         isValidData = false;
         releaseDateTextBox.nextElementSibling.textContent = "Release date must be a valid date.";
     }
-    function addBook(b) {
+    if (isValidData) {
+        let addedBook = new Book();
+        addedBook.isbn = isbn;
+        addedBook.price = price;
+        addedBook.title = title;
+        addedBook.releaseDate = new Date(releaseDate);
+        return addedBook;
     }
-    function clearAllErrorMessages() {
-        let allSpans = document.querySelectorAll("form span.error-msg");
-        allSpans.forEach(someSpan => someSpan.textContent = "");
+    else {
+        return null;
     }
+}
+function addBook(b) {
+    alert("Data was valid, book added");
+    console.log(b);
+}
+function clearAllErrorMessages() {
+    let allSpans = document.querySelectorAll("form span.error-msg");
+    allSpans.forEach(someSpan => someSpan.textContent = "");
 }

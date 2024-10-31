@@ -109,6 +109,21 @@ function getBook():Book {  // Return book or null.
     
     }
 
+    if (isValidData) {
+        // Create and populate Book object if all data is valid.
+        let addedBook = new Book();
+        addedBook.isbn = isbn;
+        addedBook.price = price;
+        addedBook.title = title;
+        addedBook.releaseDate = new Date(releaseDate);
+
+        return addedBook;
+    }
+
+    else {
+        return null;  // return null if any invalid data
+    }
+}
     /**
      * Adds a Book object to web storage.  Assumes all
      * data is valid.  Inside parenthesis is parameter
@@ -116,7 +131,8 @@ function getBook():Book {  // Return book or null.
      * @param b 
      */
     function addBook(b:Book):void {
-
+        alert("Data was valid, book added");
+        console.log(b);
     }
 
     function clearAllErrorMessages() {
@@ -132,4 +148,3 @@ function getBook():Book {  // Return book or null.
         //      currentSpan.textContent = '';
         // }
     }
-}
